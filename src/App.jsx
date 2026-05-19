@@ -191,6 +191,7 @@ export default function App() {
     return INITIAL_WISHES;
   });
   const [playerOpen, setPlayerOpen] = useState(false);
+  const [drawerOpen, setDrawerOpen] = useState(false);
 
   const mp = useMusicPlayer();
 
@@ -419,51 +420,6 @@ export default function App() {
           </div>
         </section>
 
-        {/* ══ PROGRAM ═════════════════════════════════════ */}
-        <section className="program-section" id="program">
-          <div className="program-header">
-            <p className="eyebrow"><Clock size={13} /> Günün programı</p>
-            <h2>Sade, sıcak ve telaşsız.</h2>
-          </div>
-          <div className="program-layout">
-            <div className="program-photo">
-              <img src={PROGRAM_PHOTO} alt="Zarif çift fotoğrafı" loading="lazy" />
-            </div>
-            <div className="flow-list">
-              {FLOW.map((item, i) => (
-                <div className="flow-item" key={i}>
-                  <time>{item.time}</time>
-                  <div>
-                    <h3>{item.title}</h3>
-                    <p>{item.text}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ══ GALLERY ══════════════════════════════════════ */}
-        <section className="gallery-section" id="gallery">
-          <div className="gallery-header">
-            <p className="eyebrow"><Camera size={13} /> Fotoğraf günlüğü</p>
-            <h2>Birlikte güldüğümüz,<br />heyecanımızı paylaştığımız<br />en güzel anlarımız...</h2>
-          </div>
-          <div className="gallery-grid">
-            {GALLERY.map((photo, i) => (
-              <button
-                className={`g-card g-card-${(i % 5) + 1}`}
-                key={i}
-                type="button"
-                onClick={() => setLightbox(i)}
-              >
-                <img src={photo.src} alt={photo.alt} loading="lazy" />
-                <span>{photo.tone}</span>
-              </button>
-            ))}
-          </div>
-        </section>
-
         {/* ══ WISHES ════════════════════════════════════════ */}
         <section className="wishes-section" id="wishes">
           <div className="wishes-header">
@@ -540,6 +496,51 @@ export default function App() {
           </div>
         </section>
 
+        {/* ══ PROGRAM ═════════════════════════════════════ */}
+        <section className="program-section" id="program">
+          <div className="program-header">
+            <p className="eyebrow"><Clock size={13} /> Günün programı</p>
+            <h2>Sade, sıcak ve telaşsız.</h2>
+          </div>
+          <div className="program-layout">
+            <div className="program-photo">
+              <img src={PROGRAM_PHOTO} alt="Zarif çift fotoğrafı" loading="lazy" />
+            </div>
+            <div className="flow-list">
+              {FLOW.map((item, i) => (
+                <div className="flow-item" key={i}>
+                  <time>{item.time}</time>
+                  <div>
+                    <h3>{item.title}</h3>
+                    <p>{item.text}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ══ GALLERY ══════════════════════════════════════ */}
+        <section className="gallery-section" id="gallery">
+          <div className="gallery-header">
+            <p className="eyebrow"><Camera size={13} /> Fotoğraf günlüğü</p>
+            <h2>Birlikte güldüğümüz,<br />heyecanımızı paylaştığımız<br />en güzel anlarımız...</h2>
+          </div>
+          <div className="gallery-grid">
+            {GALLERY.map((photo, i) => (
+              <button
+                className={`g-card g-card-${(i % 5) + 1}`}
+                key={i}
+                type="button"
+                onClick={() => setLightbox(i)}
+              >
+                <img src={photo.src} alt={photo.alt} loading="lazy" />
+                <span>{photo.tone}</span>
+              </button>
+            ))}
+          </div>
+        </section>
+
         {/* ══ FINAL CTA ════════════════════════════════════ */}
         <section className="final-section">
           <img src={FINAL_PHOTO} alt="" loading="lazy" />
@@ -576,6 +577,94 @@ export default function App() {
             <figcaption>{GALLERY[lightbox].tone}</figcaption>
           </figure>
           <button className="lb-nav lb-next" type="button" onClick={e => { e.stopPropagation(); setLightbox(i => (i + 1) % GALLERY.length); }} aria-label="Sonraki"><ChevronRight size={26} /></button>
+        </div>
+      )}
+
+      {/* ── floating wish button ── */}
+      <button className="wishes-floating-btn" onClick={() => setDrawerOpen(true)} aria-label="Dilek Defteri">
+        <Heart size={16} className="heart-icon" />
+        <span>Dilek Defteri</span>
+        <span className="wishes-badge">{wishes.length}</span>
+      </button>
+
+      {/* ══ GUESTBOOK DRAWER ══════════════════════════════ */}
+      {drawerOpen && (
+        <div className="drawer-overlay" role="dialog" aria-modal="true" onClick={() => setDrawerOpen(false)}>
+          <div className="drawer-content" onClick={e => e.stopPropagation()}>
+            <div className="drawer-header">
+              <h3>Dilek Defteri</h3>
+              <button className="drawer-close" onClick={() => setDrawerOpen(false)} aria-label="Kapat">
+                <X size={20} />
+              </button>
+            </div>
+            
+            <div className="drawer-body">
+              {/* Form inside drawer */}
+              <form className="wish-card-form" onSubmit={addWish}>
+                <div className="form-group">
+                  <label htmlFor="drawer-guest-name">Adınız Soyadınız</label>
+                  <input
+                    id="drawer-guest-name"
+                    type="text"
+                    value={senderName}
+                    onChange={e => setSenderName(e.target.value)}
+                    placeholder="Örn. Canan Kaya"
+                    maxLength={35}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="drawer-guest-msg">Dileğiniz veya Mesajınız</label>
+                  <textarea
+                    id="drawer-guest-msg"
+                    value={wishText}
+                    onChange={e => setWishText(e.target.value)}
+                    placeholder="Tebrik mesajı veya içten dileklerinizi yazın..."
+                    maxLength={160}
+                    required
+                  />
+                  <span className="char-count">{160 - wishText.length} karakter kaldı</span>
+                </div>
+                
+                <div className="form-group">
+                  <label>Not Kağıdı Rengi</label>
+                  <div className="color-selector">
+                    {['rose', 'sage', 'cream', 'gold'].map((c) => (
+                      <button
+                        key={c}
+                        type="button"
+                        className={`color-dot ${c} ${wishColor === c ? 'active' : ''}`}
+                        onClick={() => setWishColor(c)}
+                        aria-label={`${c} renkli kağıt seç`}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <button type="submit" className="btn primary w-100" disabled={loading}>
+                  <Send size={15} /> <span>{loading ? 'Gönderiliyor...' : 'Panoya İğnele'}</span>
+                </button>
+              </form>
+
+              <hr className="drawer-divider" />
+
+              {/* Wishes List inside drawer */}
+              <div className="drawer-wishes-list">
+                {wishes.map((w) => (
+                  <div key={w.id} className={`wish-note ${w.color}`}>
+                    <div className="note-pin" />
+                    <p className="note-message">"{w.message}"</p>
+                    <div className="note-footer">
+                      <strong className="note-author">{w.name}</strong>
+                      <span className="note-date">
+                        {new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'short' }).format(new Date(w.date))}
+                      </span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       )}
     </div>
