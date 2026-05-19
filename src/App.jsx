@@ -451,10 +451,10 @@ export default function App() {
                     value={wishText}
                     onChange={e => setWishText(e.target.value)}
                     placeholder="Tebrik mesajı veya içten dileklerinizi yazın..."
-                    maxLength={160}
+                    maxLength={800}
                     required
                   />
-                  <span className="char-count">{160 - wishText.length} karakter kaldı</span>
+                  <span className="char-count">{800 - wishText.length} karakter kaldı</span>
                 </div>
                 
                 <div className="form-group">
@@ -626,10 +626,10 @@ export default function App() {
                     value={wishText}
                     onChange={e => setWishText(e.target.value)}
                     placeholder="Tebrik mesajı veya içten dileklerinizi yazın..."
-                    maxLength={160}
+                    maxLength={800}
                     required
                   />
-                  <span className="char-count">{160 - wishText.length} karakter kaldı</span>
+                  <span className="char-count">{800 - wishText.length} karakter kaldı</span>
                 </div>
                 
                 <div className="form-group">
