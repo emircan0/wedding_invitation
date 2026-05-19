@@ -198,7 +198,7 @@ export default function App() {
   /* load wishes from sheets if configured */
   useEffect(() => {
     if (!EVENT.sheetsUrl) return;
-    fetch(EVENT.sheetsUrl)
+    fetch(`${EVENT.sheetsUrl}?_=${Date.now()}`)
       .then(res => res.json())
       .then(data => {
         if (Array.isArray(data)) {
