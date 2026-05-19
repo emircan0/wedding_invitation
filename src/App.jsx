@@ -26,19 +26,18 @@ const INITIAL_WISHES = [
   { id: '4', name: 'Murat Arslan', message: 'Kardeşim Emircan ve yengemiz Seren, mutluluğunuz daim olsun. Birlikte kuracağınız o güzel yuvaya giden ilk kapı açılıyor! 🗝️💍', color: 'gold', date: '2026-05-19T13:05:00.000Z' },
 ];
 
-/* ─── Music ──────────────────────────────────────────────── */
 const TRACKS = [
-  { file: '/music/Ed Sheeran - Perfect [cNGjD0VG4R8].mp3', title: 'Perfect', artist: 'Ed Sheeran' },
-  { file: '/music/Lady Gaga, Bruno Mars - Die With A Smile (Lyrics) [zgaCZOQCpp8].mp3', title: 'Die With A Smile', artist: 'Lady Gaga & Bruno Mars' },
-  { file: '/music/Until I Found You (Em Beihold Version) [kPlSyYtE63M].mp3', title: 'Until I Found You', artist: 'Em Beihold' },
-  { file: '/music/Berkant - Samanyolu [6D1l_8qI4ks].mp3', title: 'Samanyolu', artist: 'Berkant' },
-  { file: '/music/Kayahan & İpek Acar - Seninle Her Şeye Varım Ben (Video Klip) [3AK_Gx146ZY].mp3', title: 'Seninle Her Şeye Varım', artist: 'Kayahan & İpek Acar' },
-  { file: '/music/Michael Bublé - Sway (Lyrics) [VmZ8pKZUVfY].mp3', title: 'Sway', artist: 'Michael Bublé' },
-  { file: '/music/Yalın - Her şey Sensin (Official Video) [2ByOn9erqVk].mp3', title: 'Her Şey Sensin', artist: 'Yalın' },
-  { file: '/music/Emily Watts - La Vie En Rose [Official Music Video] [EloXaKNp2co].mp3', title: 'La Vie En Rose', artist: 'Emily Watts' },
-  { file: '/music/Kenan Doğulu - Gelinim.mp3', title: 'Gelinim', artist: 'Kenan Doğulu' },
-  { file: '/music/Esin Engin Papatya gibisin. Tango [zwAmtbtFWRw].mp3', title: 'Papatya Gibisin', artist: 'Esin Engin' },
-  { file: '/music/La Maritza but it\'s my favorite part, Sylvie Vartan [1fj6HDX2feA].mp3', title: 'La Maritza', artist: 'Sylvie Vartan' },
+  { file: '/music/ed_sheeran_perfect.mp3', title: 'Perfect', artist: 'Ed Sheeran' },
+  { file: '/music/lady_gaga_bruno_mars_die_with_a_smile.mp3', title: 'Die With A Smile', artist: 'Lady Gaga & Bruno Mars' },
+  { file: '/music/until_i_found_you.mp3', title: 'Until I Found You', artist: 'Em Beihold' },
+  { file: '/music/berkant_samanyolu.mp3', title: 'Samanyolu', artist: 'Berkant' },
+  { file: '/music/kayahan_seninle_her_seye_varim.mp3', title: 'Seninle Her Şeye Varım', artist: 'Kayahan & İpek Acar' },
+  { file: '/music/michael_buble_sway.mp3', title: 'Sway', artist: 'Michael Bublé' },
+  { file: '/music/yalin_her_sey_sensin.mp3', title: 'Her Şey Sensin', artist: 'Yalın' },
+  { file: '/music/emily_watts_la_vie_en_rose.mp3', title: 'La Vie En Rose', artist: 'Emily Watts' },
+  { file: '/music/kenan_dogulu_gelinim.mp3', title: 'Gelinim', artist: 'Kenan Doğulu' },
+  { file: '/music/esin_engin_papatya_gibisin.mp3', title: 'Papatya Gibisin', artist: 'Esin Engin' },
+  { file: '/music/sylvie_vartan_la_maritza.mp3', title: 'La Maritza', artist: 'Sylvie Vartan' },
 ];
 
 function shuffle(arr) {
@@ -427,7 +426,7 @@ export default function App() {
             <h2>Bizim için birkaç güzel söz<br />bırakmak ister misiniz?</h2>
             <p className="wishes-sub">Yazacağınız her not, bu tatlı telaşımızda bizlere en güzel hatıra olarak kalacak.</p>
           </div>
-          
+
           <div className="wishes-container">
             {/* Form */}
             <div className="wish-form-wrapper">
@@ -456,7 +455,7 @@ export default function App() {
                   />
                   <span className="char-count">{800 - wishText.length} karakter kaldı</span>
                 </div>
-                
+
                 <div className="form-group">
                   <label>Not Kağıdı Rengi</label>
                   <div className="color-selector">
@@ -603,7 +602,7 @@ export default function App() {
                 <X size={20} />
               </button>
             </div>
-            
+
             <div className="drawer-body">
               {/* Form inside drawer */}
               <form className="wish-card-form" onSubmit={addWish}>
@@ -631,7 +630,7 @@ export default function App() {
                   />
                   <span className="char-count">{800 - wishText.length} karakter kaldı</span>
                 </div>
-                
+
                 <div className="form-group">
                   <label>Not Kağıdı Rengi</label>
                   <div className="color-selector">
