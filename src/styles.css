@@ -1482,3 +1482,21 @@ footer svg {
     max-width: 100%;
   }
 }
+
+.wishes-empty-state {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+  background: rgba(255, 255, 255, 0.4);
+  border: 1px dashed rgba(120, 152, 132, 0.25);
+  border-radius: var(--r);
+  color: var(--muted);
+  text-align: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-style: italic;
+  line-height: 1.6;
+}

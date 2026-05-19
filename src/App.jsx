@@ -201,7 +201,7 @@ export default function App() {
     fetch(EVENT.sheetsUrl)
       .then(res => res.json())
       .then(data => {
-        if (Array.isArray(data) && data.length > 0) {
+        if (Array.isArray(data)) {
           const parsed = data.map(item => ({
             id: item.id || Math.random().toString(),
             name: item.name || 'Misafir',
@@ -480,18 +480,24 @@ export default function App() {
 
             {/* Note Board Grid */}
             <div className="wishes-board">
-              {wishes.map((w, i) => (
-                <div key={w.id} className={`wish-note ${w.color}`} style={{ transform: `rotate(${(i % 3 === 0 ? -1.8 : i % 3 === 1 ? 1.8 : -1) + (i % 2 === 0 ? 0.35 : -0.35)}deg)` }}>
-                  <div className="note-pin" />
-                  <p className="note-message">"{w.message}"</p>
-                  <div className="note-footer">
-                    <strong className="note-author">{w.name}</strong>
-                    <span className="note-date">
-                      {new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'short' }).format(new Date(w.date))}
-                    </span>
-                  </div>
+              {wishes.length === 0 ? (
+                <div className="wishes-empty-state">
+                  <p>Henüz not yazılmamış...<br />İlk tatlı notu siz iğneleyin! 📌</p>
                 </div>
-              ))}
+              ) : (
+                wishes.map((w, i) => (
+                  <div key={w.id} className={`wish-note ${w.color}`} style={{ transform: `rotate(${(i % 3 === 0 ? -1.8 : i % 3 === 1 ? 1.8 : -1) + (i % 2 === 0 ? 0.35 : -0.35)}deg)` }}>
+                    <div className="note-pin" />
+                    <p className="note-message">"{w.message}"</p>
+                    <div className="note-footer">
+                      <strong className="note-author">{w.name}</strong>
+                      <span className="note-date">
+                        {new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'short' }).format(new Date(w.date))}
+                      </span>
+                    </div>
+                  </div>
+                ))
+              )}
             </div>
           </div>
         </section>
@@ -650,18 +656,24 @@ export default function App() {
 
               {/* Wishes List inside drawer */}
               <div className="drawer-wishes-list">
-                {wishes.map((w) => (
-                  <div key={w.id} className={`wish-note ${w.color}`}>
-                    <div className="note-pin" />
-                    <p className="note-message">"{w.message}"</p>
-                    <div className="note-footer">
-                      <strong className="note-author">{w.name}</strong>
-                      <span className="note-date">
-                        {new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'short' }).format(new Date(w.date))}
-                      </span>
-                    </div>
+                {wishes.length === 0 ? (
+                  <div className="wishes-empty-state" style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--muted)' }}>
+                    <p>Henüz not yazılmamış...<br />İlk tatlı notu siz iğneleyin! 📌</p>
                   </div>
-                ))}
+                ) : (
+                  wishes.map((w) => (
+                    <div key={w.id} className={`wish-note ${w.color}`}>
+                      <div className="note-pin" />
+                      <p className="note-message">"{w.message}"</p>
+                      <div className="note-footer">
+                        <strong className="note-author">{w.name}</strong>
+                        <span className="note-date">
+                          {new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'short' }).format(new Date(w.date))}
+                        </span>
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
             </div>
           </div>
