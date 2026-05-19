@@ -7,29 +7,37 @@ import {
 
 /* ─── Event Info ─────────────────────────────────────────── */
 const EVENT = {
-  couple:    'Seren & Emircan',
-  herName:   'Seren',
-  hisName:   'Emircan',
-  dateISO:   '2026-06-27T13:00:00+03:00',
-  dateEnd:   '2026-06-27T17:00:00+03:00',
-  venue:     'Çamlıca Park Night',
-  city:      'İstanbul',
-  mapsUrl:   'https://maps.google.com/?q=Çamlıca+Park+Night+Istanbul',
-  calTitle:  'Seren & Emircan Nişan Töreni',
+  couple: 'Seren & Emircan',
+  herName: 'Seren',
+  hisName: 'Emircan',
+  dateISO: '2026-06-27T13:00:00+03:00',
+  dateEnd: '2026-06-27T17:00:00+03:00',
+  venue: 'Çamlıca Park Night',
+  city: 'İstanbul',
+  mapsUrl: 'https://maps.google.com/?q=Çamlıca+Park+Night+Istanbul',
+  calTitle: 'Seren & Emircan Nişan Töreni',
+  sheetsUrl: '', // Buraya Google Apps Script Web App URL ekleyebilirsiniz
 };
+
+const INITIAL_WISHES = [
+  { id: '1', name: 'Ayşe Teyze', message: 'Canım Seren ve Emircan, yüzükleriniz hayırlı olsun. Ömür boyu birbirinizin gözünün içine böyle sevgiyle bakın inşallah. 💕', color: 'rose', date: '2026-05-19T10:00:00.000Z' },
+  { id: '2', name: 'Can & Sinem', message: 'İlk adımı attınız, gerisi su gibi gelsin! Harika bir nişan gecesi olacağından eminiz, sabırsızlıkla bekliyoruz! 🥂✨', color: 'sage', date: '2026-05-19T11:15:00.000Z' },
+  { id: '3', name: 'Zeynep H.', message: 'Birbirinize her zaman böyle saygıyla, tutkuyla ve anlayışla sarılın. Tebrikler, çok mutlu olun! 🌸', color: 'cream', date: '2026-05-19T12:00:00.000Z' },
+  { id: '4', name: 'Murat Arslan', message: 'Kardeşim Emircan ve yengemiz Seren, mutluluğunuz daim olsun. Birlikte kuracağınız o güzel yuvaya giden ilk kapı açılıyor! 🗝️💍', color: 'gold', date: '2026-05-19T13:05:00.000Z' },
+];
 
 /* ─── Music ──────────────────────────────────────────────── */
 const TRACKS = [
-  { file: '/music/Ed Sheeran - Perfect [cNGjD0VG4R8].mp3',            title: 'Perfect',                 artist: 'Ed Sheeran' },
+  { file: '/music/Ed Sheeran - Perfect [cNGjD0VG4R8].mp3', title: 'Perfect', artist: 'Ed Sheeran' },
   { file: '/music/Lady Gaga, Bruno Mars - Die With A Smile (Lyrics) [zgaCZOQCpp8].mp3', title: 'Die With A Smile', artist: 'Lady Gaga & Bruno Mars' },
-  { file: '/music/Until I Found You (Em Beihold Version) [kPlSyYtE63M].mp3',            title: 'Until I Found You', artist: 'Em Beihold' },
-  { file: '/music/Berkant - Samanyolu [6D1l_8qI4ks].mp3',             title: 'Samanyolu',               artist: 'Berkant' },
+  { file: '/music/Until I Found You (Em Beihold Version) [kPlSyYtE63M].mp3', title: 'Until I Found You', artist: 'Em Beihold' },
+  { file: '/music/Berkant - Samanyolu [6D1l_8qI4ks].mp3', title: 'Samanyolu', artist: 'Berkant' },
   { file: '/music/Kayahan & İpek Acar - Seninle Her Şeye Varım Ben (Video Klip) [3AK_Gx146ZY].mp3', title: 'Seninle Her Şeye Varım', artist: 'Kayahan & İpek Acar' },
-  { file: '/music/Michael Bublé - Sway (Lyrics) [VmZ8pKZUVfY].mp3',  title: 'Sway',                    artist: 'Michael Bublé' },
+  { file: '/music/Michael Bublé - Sway (Lyrics) [VmZ8pKZUVfY].mp3', title: 'Sway', artist: 'Michael Bublé' },
   { file: '/music/Yalın - Her şey Sensin (Official Video) [2ByOn9erqVk].mp3', title: 'Her Şey Sensin', artist: 'Yalın' },
   { file: '/music/Emily Watts - La Vie En Rose [Official Music Video] [EloXaKNp2co].mp3', title: 'La Vie En Rose', artist: 'Emily Watts' },
-  { file: '/music/Kenan Doğulu - Gelinim (Official Video) #3 [nJXIVxW37wI].mp3', title: 'Gelinim',     artist: 'Kenan Doğulu' },
-  { file: '/music/Esin Engin Papatya gibisin. Tango [zwAmtbtFWRw].mp3', title: 'Papatya Gibisin',      artist: 'Esin Engin' },
+  { file: '/music/Kenan Doğulu - Gelinim.mp3', title: 'Gelinim', artist: 'Kenan Doğulu' },
+  { file: '/music/Esin Engin Papatya gibisin. Tango [zwAmtbtFWRw].mp3', title: 'Papatya Gibisin', artist: 'Esin Engin' },
   { file: '/music/La Maritza but it\'s my favorite part, Sylvie Vartan [1fj6HDX2feA].mp3', title: 'La Maritza', artist: 'Sylvie Vartan' },
 ];
 
@@ -44,42 +52,42 @@ function shuffle(arr) {
 
 /* ─── Photos ─────────────────────────────────────────────── */
 const GALLERY = [
-  { src: '/photos/img-8617.jpg',          alt: 'Bahçede şık çift fotoğrafı',         tone: 'Zarif akşam' },
-  { src: '/photos/img-6532.jpg',          alt: 'Çiçekli aynada birlikte poz',         tone: 'Çiçekli durak' },
-  { src: '/photos/img-5486.jpg',          alt: 'Işıklar altında birlikte',            tone: 'Işıklar' },
-  { src: '/photos/img-6463.jpg',          alt: 'Karlı günde gülümseyen çift',         tone: 'Kış neşesi' },
-  { src: '/photos/img-7137.jpg',          alt: 'Romantik bir an',                     tone: 'İlk bakış' },
-  { src: '/photos/img-6647.jpg',          alt: 'Bahçede porttre',                     tone: 'Zarafet' },
-  { src: '/photos/img-6182.jpg',          alt: 'Sıcak bir selfie',                    tone: 'Yakınlık' },
-  { src: '/photos/img-6310.jpg',          alt: 'Soğuk havada selfie',                 tone: 'Sakin gün' },
-  { src: '/photos/img-5299.jpg',          alt: 'Gülüşler',                            tone: 'Kahkaha' },
-  { src: '/photos/img-4972.jpg',          alt: 'Şehir manzarasında çift',             tone: 'Manzara' },
+  { src: '/photos/img-8617.jpg', alt: 'Bahçede şık çift fotoğrafı', tone: 'Zarif akşam' },
+  { src: '/photos/img-6532.jpg', alt: 'Çiçekli aynada birlikte poz', tone: 'Çiçekli durak' },
+  { src: '/photos/img-5486.jpg', alt: 'Işıklar altında birlikte', tone: 'Işıklar' },
+  { src: '/photos/img-6463.jpg', alt: 'Karlı günde gülümseyen çift', tone: 'Kış neşesi' },
+  { src: '/photos/img-7137.jpg', alt: 'Romantik bir an', tone: 'İlk bakış' },
+  { src: '/photos/img-6647.jpg', alt: 'Bahçede porttre', tone: 'Zarafet' },
+  { src: '/photos/img-6182.jpg', alt: 'Sıcak bir selfie', tone: 'Yakınlık' },
+  { src: '/photos/img-6310.jpg', alt: 'Soğuk havada selfie', tone: 'Sakin gün' },
+  { src: '/photos/img-5299.jpg', alt: 'Gülüşler', tone: 'Kahkaha' },
+  { src: '/photos/img-4972.jpg', alt: 'Şehir manzarasında çift', tone: 'Manzara' },
 ];
 
-const HERO_PHOTO   = '/photos/img-7137.jpg';
-const HERO_PHOTO2  = '/photos/img-8617.jpg';
-const BG_PHOTO     = '/photos/goruntu.jpg';
+const HERO_PHOTO = '/photos/img-7137.jpg';
+const HERO_PHOTO2 = '/photos/img-8617.jpg';
+const BG_PHOTO = '/photos/goruntu.jpg';
 const STORY_PHOTO1 = '/photos/img-6532.jpg';
 const STORY_PHOTO2 = '/photos/img-6463.jpg';
 const STORY_PHOTO3 = '/photos/img-5486.jpg';
 const PROGRAM_PHOTO = '/photos/img-6647.jpg';
-const FINAL_PHOTO  = '/photos/img-6310.jpg';
+const FINAL_PHOTO = '/photos/img-6310.jpg';
 
 /* ─── Timeline ───────────────────────────────────────────── */
 const FLOW = [
-  { time: '13:00', title: 'Karşılama',        text: 'İlk ikramlar, çiçekli masalar ve sıcak gülüşler.' },
-  { time: '13:45', title: 'Yüzük töreni',     text: 'Ailelerimizle birlikte, kalpten gelen o özel an.' },
-  { time: '14:30', title: 'Tatlı masası',     text: 'Pasta, tatlılar ve masalar arası keyifli sohbet.' },
-  { time: '15:30', title: 'Müzik & kutlama',  text: 'Hafif başlayan, sonra neşelenen bir kutlama.' },
-  { time: '17:00', title: 'Kapanış',          text: 'Bol fotoğraf ve güzel dileklerle vedalaşma.' },
+  { time: '13:00', title: 'Karşılama', text: 'İlk ikramlar, çiçekli masalar ve sıcak gülüşler.' },
+  { time: '13:45', title: 'Yüzük töreni', text: 'Ailelerimizle birlikte, kalpten gelen o özel an.' },
+  { time: '14:30', title: 'Tatlı masası', text: 'Pasta, tatlılar ve masalar arası keyifli sohbet.' },
+  { time: '15:30', title: 'Müzik & kutlama', text: 'Hafif başlayan, sonra neşelenen bir kutlama.' },
+  { time: '17:00', title: 'Kapanış', text: 'Bol fotoğraf ve güzel dileklerle vedalaşma.' },
 ];
 
 /* ─── Countdown ──────────────────────────────────────────── */
 function getRemaining() {
   const diff = Math.max(0, new Date(EVENT.dateISO).getTime() - Date.now());
   return {
-    days:    Math.floor(diff / 86400000),
-    hours:   Math.floor((diff / 3600000) % 24),
+    days: Math.floor(diff / 86400000),
+    hours: Math.floor((diff / 3600000) % 24),
     minutes: Math.floor((diff / 60000) % 60),
     seconds: Math.floor((diff / 1000) % 60),
   };
@@ -91,15 +99,15 @@ function fmtCal(d) { return d.toISOString().replace(/[-:]/g, '').replace(/\.\d{3
    MUSIC PLAYER HOOK
 ═══════════════════════════════════════════════════════════ */
 function useMusicPlayer() {
-  const audioRef     = useRef(null);
-  const [queue]      = useState(() => shuffle(TRACKS));
-  const [index, setIndex]     = useState(0);
+  const audioRef = useRef(null);
+  const [queue] = useState(() => shuffle(TRACKS));
+  const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
-  const [muted,   setMuted]   = useState(false);
-  const [volume,  setVolume]  = useState(0.55);
+  const [muted, setMuted] = useState(false);
+  const [volume, setVolume] = useState(0.55);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
-  const [started,  setStarted]  = useState(false);
+  const [started, setStarted] = useState(false);
 
   const track = queue[index];
 
@@ -107,7 +115,7 @@ function useMusicPlayer() {
   const tryAutoPlay = useCallback(() => {
     if (started) return;
     setStarted(true);
-    audioRef.current?.play().then(() => setPlaying(true)).catch(() => {});
+    audioRef.current?.play().then(() => setPlaying(true)).catch(() => { });
   }, [started]);
 
   useEffect(() => {
@@ -119,10 +127,10 @@ function useMusicPlayer() {
   useEffect(() => {
     const audio = audioRef.current;
     if (!audio) return;
-    audio.src    = track.file;
+    audio.src = track.file;
     audio.volume = volume;
-    audio.muted  = muted;
-    if (playing) audio.play().catch(() => {});
+    audio.muted = muted;
+    if (playing) audio.play().catch(() => { });
   }, [index]); // eslint-disable-line
 
   useEffect(() => {
@@ -133,14 +141,14 @@ function useMusicPlayer() {
     if (audioRef.current) audioRef.current.muted = muted;
   }, [muted]);
 
-  const next  = useCallback(() => setIndex(i => (i + 1) % queue.length), [queue.length]);
-  const prev  = useCallback(() => setIndex(i => (i - 1 + queue.length) % queue.length), [queue.length]);
+  const next = useCallback(() => setIndex(i => (i + 1) % queue.length), [queue.length]);
+  const prev = useCallback(() => setIndex(i => (i - 1 + queue.length) % queue.length), [queue.length]);
 
   const togglePlay = () => {
     const audio = audioRef.current;
     if (!audio) return;
     if (playing) { audio.pause(); setPlaying(false); }
-    else { audio.play().then(() => setPlaying(true)).catch(() => {}); }
+    else { audio.play().then(() => setPlaying(true)).catch(() => { }); }
   };
 
   const onTimeUpdate = () => {
@@ -170,16 +178,42 @@ function useMusicPlayer() {
 ═══════════════════════════════════════════════════════════ */
 export default function App() {
   const [remaining, setRemaining] = useState(getRemaining);
-  const [lightbox,  setLightbox]  = useState(null);
-  const [wishText,  setWishText]  = useState('');
-  const [wishes,    setWishes]    = useState([
-    'Her bakışınız böyle gülsün. 🌸',
-    'Bu akşam kadar zarif bir ömür olsun. ✨',
-    'Kalabalığın içinde hep birbirinizi bulun. 💕',
-  ]);
+  const [lightbox, setLightbox] = useState(null);
+  const [wishText, setWishText] = useState('');
+  const [senderName, setSenderName] = useState('');
+  const [wishColor, setWishColor] = useState('rose');
+  const [loading, setLoading] = useState(false);
+  const [wishes, setWishes] = useState(() => {
+    const local = localStorage.getItem('wedding_wishes');
+    if (local) {
+      try { return JSON.parse(local); } catch (e) { return INITIAL_WISHES; }
+    }
+    return INITIAL_WISHES;
+  });
   const [playerOpen, setPlayerOpen] = useState(false);
 
   const mp = useMusicPlayer();
+
+  /* load wishes from sheets if configured */
+  useEffect(() => {
+    if (!EVENT.sheetsUrl) return;
+    fetch(EVENT.sheetsUrl)
+      .then(res => res.json())
+      .then(data => {
+        if (Array.isArray(data) && data.length > 0) {
+          const parsed = data.map(item => ({
+            id: item.id || Math.random().toString(),
+            name: item.name || 'Misafir',
+            message: item.message || '',
+            color: item.color || ['rose', 'sage', 'cream', 'gold'][Math.floor(Math.random() * 4)],
+            date: item.date || new Date().toISOString()
+          })).reverse();
+          setWishes(parsed);
+          localStorage.setItem('wedding_wishes', JSON.stringify(parsed));
+        }
+      })
+      .catch(err => console.error('Dilekler yüklenirken hata:', err));
+  }, []);
 
   /* countdown */
   useEffect(() => {
@@ -191,19 +225,49 @@ export default function App() {
   useEffect(() => {
     if (lightbox === null) return;
     const onKey = (e) => {
-      if (e.key === 'Escape')     setLightbox(null);
+      if (e.key === 'Escape') setLightbox(null);
       if (e.key === 'ArrowRight') setLightbox(i => (i + 1) % GALLERY.length);
-      if (e.key === 'ArrowLeft')  setLightbox(i => (i - 1 + GALLERY.length) % GALLERY.length);
+      if (e.key === 'ArrowLeft') setLightbox(i => (i - 1 + GALLERY.length) % GALLERY.length);
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [lightbox]);
 
-  const addWish = (e) => {
+  const addWish = async (e) => {
     e.preventDefault();
-    if (!wishText.trim()) return;
-    setWishes(w => [wishText.trim(), ...w].slice(0, 8));
+    if (!senderName.trim() || !wishText.trim()) return;
+
+    const newWish = {
+      id: Date.now().toString(),
+      name: senderName.trim(),
+      message: wishText.trim(),
+      color: wishColor,
+      date: new Date().toISOString()
+    };
+
+    setLoading(true);
+
+    const updated = [newWish, ...wishes];
+    setWishes(updated);
+    localStorage.setItem('wedding_wishes', JSON.stringify(updated));
+
     setWishText('');
+    setSenderName('');
+
+    if (EVENT.sheetsUrl) {
+      try {
+        await fetch(EVENT.sheetsUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(newWish)
+        });
+      } catch (err) {
+        console.error('Dilek gönderim hatası:', err);
+      }
+    }
+
+    setLoading(false);
   };
 
   const calUrl = (() => {
@@ -289,7 +353,7 @@ export default function App() {
         <div className="hero-inner">
           <div className="hero-copy">
             <p className="eyebrow">Ailelerimizle birlikte</p>
-            <h1>Bu mutlu günümüzde<br/>yanımızda olun</h1>
+            <h1>Bu mutlu günümüzde<br />yanımızda olun</h1>
             <p className="hero-couple">{EVENT.herName} <span>&</span> {EVENT.hisName}</p>
             <p className="hero-sub">Sadece bir tören değil; en sevdiklerimizle bol kahkahalı, sıcacık ve unutulmaz bir gün geçirmek istiyoruz. Bu güzel hikayeye siz de ortak olun!</p>
             <div className="hero-btns">
@@ -342,7 +406,7 @@ export default function App() {
         <section className="story-section" id="story">
           <div className="story-copy">
             <p className="eyebrow"><Heart size={13} /> Küçük bir hikâye</p>
-            <h2>Göz göze, kalp kalbe<br/>başlayan<br/>yepyeni bir hayat.</h2>
+            <h2>Göz göze, kalp kalbe<br />başlayan<br />yepyeni bir hayat.</h2>
             <p>Yıllar içinde biriktirdiğimiz güzel anılar, içten gülüşler ve sevgi dolu bakışlar bizi bu özel güne getirdi. Parmaklarımıza takılacak o ilk zarif halkalarla geleceğe ilk adımı atarken, bu heyecan dolu anı bizimle paylaşmanız bizim için en büyük hediye.</p>
             <div className="quote-block">
               <span>"Seninle her şeye varım ben."</span>
@@ -383,7 +447,7 @@ export default function App() {
         <section className="gallery-section" id="gallery">
           <div className="gallery-header">
             <p className="eyebrow"><Camera size={13} /> Fotoğraf günlüğü</p>
-            <h2>Birlikte güldüğümüz,<br/>heyecanımızı paylaştığımız<br/>en güzel anlarımız...</h2>
+            <h2>Birlikte güldüğümüz,<br />heyecanımızı paylaştığımız<br />en güzel anlarımız...</h2>
           </div>
           <div className="gallery-grid">
             {GALLERY.map((photo, i) => (
@@ -404,23 +468,73 @@ export default function App() {
         <section className="wishes-section" id="wishes">
           <div className="wishes-header">
             <p className="eyebrow">Dilek defteri</p>
-            <h2>Bizim için birkaç güzel söz<br/>bırakmak ister misiniz?</h2>
+            <h2>Bizim için birkaç güzel söz<br />bırakmak ister misiniz?</h2>
+            <p className="wishes-sub">Yazacağınız her not, bu tatlı telaşımızda bizlere en güzel hatıra olarak kalacak.</p>
           </div>
-          <div className="wishes-layout">
-            <form className="wish-form" onSubmit={addWish}>
-              <input
-                type="text"
-                value={wishText}
-                onChange={e => setWishText(e.target.value)}
-                placeholder="Kısa bir dilek yaz..."
-                maxLength={90}
-                aria-label="Dilek mesajı"
-              />
-              <button type="submit" aria-label="Gönder"><Send size={16} /></button>
-            </form>
-            <div className="wish-list">
+          
+          <div className="wishes-container">
+            {/* Form */}
+            <div className="wish-form-wrapper">
+              <form className="wish-card-form" onSubmit={addWish}>
+                <div className="form-group">
+                  <label htmlFor="guest-name">Adınız Soyadınız</label>
+                  <input
+                    id="guest-name"
+                    type="text"
+                    value={senderName}
+                    onChange={e => setSenderName(e.target.value)}
+                    placeholder="Örn. Canan Kaya"
+                    maxLength={35}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="guest-msg">Dileğiniz veya Mesajınız</label>
+                  <textarea
+                    id="guest-msg"
+                    value={wishText}
+                    onChange={e => setWishText(e.target.value)}
+                    placeholder="Tebrik mesajı veya içten dileklerinizi yazın..."
+                    maxLength={160}
+                    required
+                  />
+                  <span className="char-count">{160 - wishText.length} karakter kaldı</span>
+                </div>
+                
+                <div className="form-group">
+                  <label>Not Kağıdı Rengi</label>
+                  <div className="color-selector">
+                    {['rose', 'sage', 'cream', 'gold'].map((c) => (
+                      <button
+                        key={c}
+                        type="button"
+                        className={`color-dot ${c} ${wishColor === c ? 'active' : ''}`}
+                        onClick={() => setWishColor(c)}
+                        aria-label={`${c} renkli kağıt seç`}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <button type="submit" className="btn primary w-100" disabled={loading}>
+                  <Send size={15} /> <span>{loading ? 'Gönderiliyor...' : 'Panoya İğnele'}</span>
+                </button>
+              </form>
+            </div>
+
+            {/* Note Board Grid */}
+            <div className="wishes-board">
               {wishes.map((w, i) => (
-                <p key={i} className="wish-item">{w}</p>
+                <div key={w.id} className={`wish-note ${w.color}`} style={{ transform: `rotate(${(i % 3 === 0 ? -1.8 : i % 3 === 1 ? 1.8 : -1) + (i % 2 === 0 ? 0.35 : -0.35)}deg)` }}>
+                  <div className="note-pin" />
+                  <p className="note-message">"{w.message}"</p>
+                  <div className="note-footer">
+                    <strong className="note-author">{w.name}</strong>
+                    <span className="note-date">
+                      {new Intl.DateTimeFormat('tr-TR', { day: 'numeric', month: 'short' }).format(new Date(w.date))}
+                    </span>
+                  </div>
+                </div>
               ))}
             </div>
           </div>
@@ -432,7 +546,7 @@ export default function App() {
           <div className="final-overlay" />
           <div className="final-inner">
             <p className="eyebrow light">27 Haziran 2026</p>
-            <h2>Bu özel tarihi<br/>takviminize not etmeyi unutmayın!</h2>
+            <h2>Bu özel tarihi<br />takviminize not etmeyi unutmayın!</h2>
             <div className="final-btns">
               <a className="btn primary" href={calUrl} target="_blank" rel="noreferrer">
                 <CalendarDays size={16} /><span>Takvime ekle</span>
