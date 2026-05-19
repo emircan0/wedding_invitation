@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import {
   CalendarDays, Camera, ChevronLeft, ChevronRight, Clock,
   Heart, MapPin, Music2, Navigation, Pause, Play,
-  Send, Shuffle, SkipForward, Sparkles, Volume2, VolumeX, X,
+  Send, Shuffle, SkipForward, Volume2, VolumeX, X,
 } from 'lucide-react';
 
 /* ─── Event Info ─────────────────────────────────────────── */
@@ -288,10 +288,10 @@ export default function App() {
         <div className="hero-overlay" />
         <div className="hero-inner">
           <div className="hero-copy">
-            <p className="eyebrow"><Sparkles size={13} /> Ailelerimizle birlikte</p>
-            <h1>Nişanımıza<br/>davetlisiniz</h1>
+            <p className="eyebrow">Ailelerimizle birlikte</p>
+            <h1>Bu mutlu günümüzde<br/>yanımızda olun</h1>
             <p className="hero-couple">{EVENT.herName} <span>&</span> {EVENT.hisName}</p>
-            <p className="hero-sub">Bir günü sadece bir tören değil, sevdiklerimizle birlikte yazılan sıcak bir hikâye yapmak istiyoruz.</p>
+            <p className="hero-sub">Sadece bir tören değil; en sevdiklerimizle bol kahkahalı, sıcacık ve unutulmaz bir gün geçirmek istiyoruz. Bu güzel hikayeye siz de ortak olun!</p>
             <div className="hero-btns">
               <a className="btn primary" href="#details"><MapPin size={16} /><span>Bilgilere bak</span></a>
               <a className="btn ghost" href="#gallery"><Camera size={16} /><span>Fotoğraflar</span></a>
@@ -342,10 +342,9 @@ export default function App() {
         <section className="story-section" id="story">
           <div className="story-copy">
             <p className="eyebrow"><Heart size={13} /> Küçük bir hikâye</p>
-            <h2>Kalabalığın içinde<br/>hep aynı yere bakan<br/>iki kişi.</h2>
-            <p>Yıllar içinde biriktirilen küçük anlar, bakışlar, gülüşler... Hepsi bu geceye doğru aktı. Sizi de bu sihirli anın bir parçası yapmak istiyoruz.</p>
+            <h2>Göz göze, kalp kalbe<br/>başlayan<br/>yepyeni bir hayat.</h2>
+            <p>Yıllar içinde biriktirdiğimiz güzel anılar, içten gülüşler ve sevgi dolu bakışlar bizi bu özel güne getirdi. Hayatımızın bu en anlamlı evet'ini söylerken, mutluluğumuzu sizinle paylaşmak bizim için en büyük hediye.</p>
             <div className="quote-block">
-              <Sparkles size={18} />
               <span>"Seninle her şeye varım ben."</span>
             </div>
           </div>
@@ -384,7 +383,7 @@ export default function App() {
         <section className="gallery-section" id="gallery">
           <div className="gallery-header">
             <p className="eyebrow"><Camera size={13} /> Fotoğraf günlüğü</p>
-            <h2>Biraz şehir, biraz kahkaha,<br/>biraz da o güzel telaş.</h2>
+            <h2>Birlikte güldüğümüz,<br/>heyecanımızı paylaştığımız<br/>en güzel anlarımız...</h2>
           </div>
           <div className="gallery-grid">
             {GALLERY.map((photo, i) => (
@@ -404,8 +403,8 @@ export default function App() {
         {/* ══ WISHES ════════════════════════════════════════ */}
         <section className="wishes-section" id="wishes">
           <div className="wishes-header">
-            <p className="eyebrow"><Sparkles size={13} /> Dilek defteri</p>
-            <h2>Güzel bir cümle bırak.</h2>
+            <p className="eyebrow">Dilek defteri</p>
+            <h2>Bizim için birkaç güzel söz<br/>bırakmak ister misiniz?</h2>
           </div>
           <div className="wishes-layout">
             <form className="wish-form" onSubmit={addWish}>
@@ -432,8 +431,8 @@ export default function App() {
           <img src={FINAL_PHOTO} alt="" loading="lazy" />
           <div className="final-overlay" />
           <div className="final-inner">
-            <p className="eyebrow light"><Sparkles size={13} /> 27 Haziran 2026</p>
-            <h2>Takvimine ekle,<br/>yolu kaybetme.</h2>
+            <p className="eyebrow light">27 Haziran 2026</p>
+            <h2>Bu özel tarihi<br/>takviminize not etmeyi unutmayın!</h2>
             <div className="final-btns">
               <a className="btn primary" href={calUrl} target="_blank" rel="noreferrer">
                 <CalendarDays size={16} /><span>Takvime ekle</span>
