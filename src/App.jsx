@@ -343,7 +343,7 @@ export default function App() {
           <div className="story-copy">
             <p className="eyebrow"><Heart size={13} /> Küçük bir hikâye</p>
             <h2>Göz göze, kalp kalbe<br/>başlayan<br/>yepyeni bir hayat.</h2>
-            <p>Yıllar içinde biriktirdiğimiz güzel anılar, içten gülüşler ve sevgi dolu bakışlar bizi bu özel güne getirdi. Hayatımızın bu en anlamlı evet'ini söylerken, mutluluğumuzu sizinle paylaşmak bizim için en büyük hediye.</p>
+            <p>Yıllar içinde biriktirdiğimiz güzel anılar, içten gülüşler ve sevgi dolu bakışlar bizi bu özel güne getirdi. Parmaklarımıza takılacak o ilk zarif halkalarla geleceğe ilk adımı atarken, bu heyecan dolu anı bizimle paylaşmanız bizim için en büyük hediye.</p>
             <div className="quote-block">
               <span>"Seninle her şeye varım ben."</span>
             </div>
