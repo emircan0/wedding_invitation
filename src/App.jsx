@@ -16,7 +16,7 @@ const EVENT = {
   city: 'İstanbul',
   mapsUrl: 'https://maps.google.com/?q=Çamlıca+Park+Night+Istanbul',
   calTitle: 'Seren & Emircan Nişan Töreni',
-  sheetsUrl: '', // Buraya Google Apps Script Web App URL ekleyebilirsiniz
+  sheetsUrl: 'https://script.google.com/macros/s/AKfycbxwhxghB0e5AZ2lBNxoo69NXuFsNO7tzwrNcWf-c3dZxNbMoMbJ29Uc5uCtpEGW1R7GGg/exec',
 };
 
 const INITIAL_WISHES = [
