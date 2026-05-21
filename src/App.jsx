@@ -56,11 +56,12 @@ const GALLERY = [
   { src: '/photos/img-5486.jpg', alt: 'Işıklar altında birlikte', tone: 'Işıklar' },
   { src: '/photos/img-6463.jpg', alt: 'Karlı günde gülümseyen çift', tone: 'Kış neşesi' },
   { src: '/photos/img-7137.jpg', alt: 'Romantik bir an', tone: 'İlk bakış' },
-  { src: '/photos/img-6647.jpg', alt: 'Bahçede porttre', tone: 'Zarafet' },
+  { src: '/photos/whatsapp-1.jpg', alt: 'Göz göze mutlu bir an', tone: 'Birlikte' },
   { src: '/photos/img-6182.jpg', alt: 'Sıcak bir selfie', tone: 'Yakınlık' },
   { src: '/photos/img-6310.jpg', alt: 'Soğuk havada selfie', tone: 'Sakin gün' },
   { src: '/photos/img-5299.jpg', alt: 'Gülüşler', tone: 'Kahkaha' },
   { src: '/photos/img-4972.jpg', alt: 'Şehir manzarasında çift', tone: 'Manzara' },
+  { src: '/photos/whatsapp-2.jpg', alt: 'Sıcak ve içten bir gülüş', tone: 'Samimiyet' },
 ];
 
 const HERO_PHOTO = '/photos/img-7137.jpg';
@@ -69,8 +70,8 @@ const BG_PHOTO = '/photos/goruntu.jpg';
 const STORY_PHOTO1 = '/photos/img-6532.jpg';
 const STORY_PHOTO2 = '/photos/img-6463.jpg';
 const STORY_PHOTO3 = '/photos/img-5486.jpg';
-const PROGRAM_PHOTO = '/photos/img-6647.jpg';
-const FINAL_PHOTO = '/photos/img-6310.jpg';
+const PROGRAM_PHOTO = '/photos/whatsapp-1.jpg';
+const FINAL_PHOTO = '/photos/whatsapp-2.jpg';
 
 /* ─── Timeline ───────────────────────────────────────────── */
 const FLOW = [
@@ -548,18 +549,21 @@ export default function App() {
 
         {/* ══ FINAL CTA ════════════════════════════════════ */}
         <section className="final-section">
-          <img src={FINAL_PHOTO} alt="" loading="lazy" />
-          <div className="final-overlay" />
-          <div className="final-inner">
-            <p className="eyebrow light">27 Haziran 2026</p>
-            <h2>Bu özel tarihi<br />takviminize not etmeyi unutmayın!</h2>
-            <div className="final-btns">
-              <a className="btn primary" href={calUrl} target="_blank" rel="noreferrer">
-                <CalendarDays size={16} /><span>Takvime ekle</span>
-              </a>
-              <a className="btn ghost-light" href={EVENT.mapsUrl} target="_blank" rel="noreferrer">
-                <Navigation size={16} /><span>Konumu aç</span>
-              </a>
+          <div className="final-container">
+            <div className="final-photo-wrapper">
+              <img src={FINAL_PHOTO} alt="Seren & Emircan" loading="lazy" />
+            </div>
+            <div className="final-content">
+              <p className="eyebrow">27 Haziran 2026</p>
+              <h2>Bu özel tarihi<br />takviminize not etmeyi unutmayın!</h2>
+              <div className="final-btns">
+                <a className="btn primary" href={calUrl} target="_blank" rel="noreferrer">
+                  <CalendarDays size={16} /><span>Takvime ekle</span>
+                </a>
+                <a className="btn ghost" href={EVENT.mapsUrl} target="_blank" rel="noreferrer">
+                  <Navigation size={16} /><span>Konumu aç</span>
+                </a>
+              </div>
             </div>
           </div>
         </section>
