@@ -61,7 +61,7 @@ const GALLERY = [
   { src: '/photos/img-6310.jpg', alt: 'Soğuk havada selfie', tone: 'Sakin gün' },
   { src: '/photos/img-5299.jpg', alt: 'Gülüşler', tone: 'Kahkaha' },
   { src: '/photos/img-4972.jpg', alt: 'Şehir manzarasında çift', tone: 'Manzara' },
-  { src: '/photos/whatsapp-3.jpg', alt: 'Sıcak ve içten bir gülüş', tone: 'Samimiyet' },
+  { src: '/photos/whatsapp-2.jpg', alt: 'Sıcak ve içten bir gülüş', tone: 'Samimiyet' },
 ];
 
 const HERO_PHOTO = '/photos/img-7137.jpg';
