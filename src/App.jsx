@@ -51,6 +51,7 @@ function shuffle(arr) {
 
 /* ─── Photos ─────────────────────────────────────────────── */
 const GALLERY = [
+  { src: '/photos/wroclaw.jpeg', alt: 'Tarihi bina önünde poz', tone: 'Güzel anılar' },
   { src: '/photos/img-8617.jpg', alt: 'Bahçede şık çift fotoğrafı', tone: 'Zarif akşam' },
   { src: '/photos/img-6532.jpg', alt: 'Çiçekli aynada birlikte poz', tone: 'Çiçekli durak' },
   { src: '/photos/img-5486.jpg', alt: 'Işıklar altında birlikte', tone: 'Işıklar' },
@@ -349,7 +350,6 @@ export default function App() {
 
       {/* ══ HERO ════════════════════════════════════════════ */}
       <header className="hero" id="top">
-        <img className="hero-bg" src={BG_PHOTO} alt="" loading="eager" />
         <div className="hero-overlay" />
         <div className="hero-inner">
           <div className="hero-copy">
