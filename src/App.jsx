@@ -77,7 +77,8 @@ const FINAL_PHOTO = '/photos/whatsapp-3.jpg';
 const FLOW = [
   { time: '13:00', title: 'Karşılama', text: 'İlk ikramlar, çiçekli masalar ve sıcak gülüşler.' },
   { time: '13:45', title: 'Yüzük töreni', text: 'Ailelerimizle birlikte, kalpten gelen o özel an.' },
-  { time: '14:30', title: 'Tatlı masası', text: 'Pasta, tatlılar ve masalar arası keyifli sohbet.' },
+  { time: '14:15', title: 'Takı töreni', text: 'Tebriklerin kabulü ve bu özel anın paylaşılması.' },
+  { time: '14:45', title: 'Tatlı masası', text: 'Pasta, tatlılar ve masalar arası keyifli sohbet.' },
   { time: '15:30', title: 'Müzik & kutlama', text: 'Hafif başlayan, sonra neşelenen bir kutlama.' },
   { time: '17:00', title: 'Kapanış', text: 'Bol fotoğraf ve güzel dileklerle vedalaşma.' },
 ];
