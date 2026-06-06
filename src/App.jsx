@@ -195,6 +195,14 @@ export default function App() {
 
   const mp = useMusicPlayer();
 
+  const isPinnedWish = useCallback((w) => {
+    return String(w.id) === '1779195185222' || w.name === 'Seren & Emircan';
+  }, []);
+
+  const sortedWishes = React.useMemo(() => {
+    return wishes.filter(isPinnedWish).concat(wishes.filter(w => !isPinnedWish(w)));
+  }, [wishes, isPinnedWish]);
+
   /* load wishes from sheets if configured */
   useEffect(() => {
     if (!EVENT.sheetsUrl) return;
@@ -479,14 +487,15 @@ export default function App() {
 
             {/* Note Board Grid */}
             <div className="wishes-board">
-              {wishes.length === 0 ? (
+              {sortedWishes.length === 0 ? (
                 <div className="wishes-empty-state">
                   <p>Henüz not yazılmamış...<br />İlk tatlı notu siz iğneleyin! 📌</p>
                 </div>
               ) : (
-                wishes.map((w, i) => (
-                  <div key={w.id} className={`wish-note ${w.color}`} style={{ transform: `rotate(${(i % 3 === 0 ? -1.8 : i % 3 === 1 ? 1.8 : -1) + (i % 2 === 0 ? 0.35 : -0.35)}deg)` }}>
+                sortedWishes.map((w, i) => (
+                  <div key={w.id} className={`wish-note ${w.color} ${isPinnedWish(w) ? 'pinned-note' : ''}`} style={{ transform: `rotate(${(i % 3 === 0 ? -1.8 : i % 3 === 1 ? 1.8 : -1) + (i % 2 === 0 ? 0.35 : -0.35)}deg)` }}>
                     <div className="note-pin" />
+                    {isPinnedWish(w) && <span className="pinned-tag">📌 Çiftin Notu</span>}
                     <p className="note-message">"{w.message}"</p>
                     <div className="note-footer">
                       <strong className="note-author">{w.name}</strong>
@@ -658,14 +667,15 @@ export default function App() {
 
               {/* Wishes List inside drawer */}
               <div className="drawer-wishes-list">
-                {wishes.length === 0 ? (
+                {sortedWishes.length === 0 ? (
                   <div className="wishes-empty-state" style={{ textAlign: 'center', padding: '40px 20px', color: 'var(--muted)' }}>
                     <p>Henüz not yazılmamış...<br />İlk tatlı notu siz iğneleyin! 📌</p>
                   </div>
                 ) : (
-                  wishes.map((w) => (
-                    <div key={w.id} className={`wish-note ${w.color}`}>
+                  sortedWishes.map((w) => (
+                    <div key={w.id} className={`wish-note ${w.color} ${isPinnedWish(w) ? 'pinned-note' : ''}`}>
                       <div className="note-pin" />
+                      {isPinnedWish(w) && <span className="pinned-tag">📌 Çiftin Notu</span>}
                       <p className="note-message">"{w.message}"</p>
                       <div className="note-footer">
                         <strong className="note-author">{w.name}</strong>

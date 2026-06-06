@@ -961,6 +961,34 @@ main section {
   border-top: 4px solid var(--gold);
 }
 
+.wish-note.pinned-note {
+  border: 1.5px solid var(--peach);
+  border-top-width: 4px;
+  box-shadow:
+    0 14px 32px rgba(233, 170, 159, 0.16),
+    0 2px 8px rgba(233, 170, 159, 0.08);
+}
+
+.wish-note.pinned-note .note-pin {
+  background: var(--peach-deep);
+  box-shadow: 0 0 6px rgba(200, 111, 116, 0.6);
+  width: 10px;
+  height: 10px;
+}
+
+.pinned-tag {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--peach-deep);
+  background: rgba(233, 170, 159, 0.14);
+  padding: 2px 8px;
+  border-radius: 999px;
+  letter-spacing: 0.02em;
+}
+
 .note-pin {
   position: absolute;
   top: 8px;
